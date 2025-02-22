@@ -1,0 +1,27 @@
+{
+  "name": "project-one-server-server-two-configs",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/project-one/server/server-two/configs/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/project-one/server/server-two/configs",
+        "tsConfig": "libs/project-one/server/server-two/configs/tsconfig.lib.json",
+        "packageJson": "libs/project-one/server/server-two/configs/package.json",
+        "main": "libs/project-one/server/server-two/configs/src/index.ts",
+        "assets": ["libs/project-one/server/server-two/configs/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/project-one/server/server-two/configs/jest.config.ts"
+      }
+    }
+  }
+}

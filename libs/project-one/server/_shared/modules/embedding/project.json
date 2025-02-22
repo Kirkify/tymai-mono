@@ -1,0 +1,27 @@
+{
+  "name": "project-one-server-shared-modules-embedding",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/project-one/server/_shared/modules/embedding/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/project-one/server/_shared/modules/embedding",
+        "tsConfig": "libs/project-one/server/_shared/modules/embedding/tsconfig.lib.json",
+        "packageJson": "libs/project-one/server/_shared/modules/embedding/package.json",
+        "main": "libs/project-one/server/_shared/modules/embedding/src/index.ts",
+        "assets": ["libs/project-one/server/_shared/modules/embedding/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/project-one/server/_shared/modules/embedding/jest.config.ts"
+      }
+    }
+  }
+}

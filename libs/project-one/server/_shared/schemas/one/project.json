@@ -1,0 +1,62 @@
+{
+  "name": "project-one-server-shared-schemas-one",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/project-one/server/_shared/schemas/one/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project project-one-server-shared-schemas-one --web",
+  "targets": {
+    "db-seeder": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx build project-one-db-seeder",
+          "node dist/apps/project-one-db-seeder/main.js"
+        ],
+        "parallel": false
+      }
+    },
+    "prisma": {
+      "command": "prisma",
+      "options": {
+        "cwd": "libs/project-one/server/_shared/schemas/one"
+      }
+    },
+    "generate-types": {
+      "command": "prisma generate",
+      "options": {
+        "cwd": "libs/project-one/server/_shared/schemas/one"
+      }
+    },
+    "generate-types-with-sql": {
+      "command": "prisma generate --sql",
+      "options": {
+        "cwd": "libs/project-one/server/_shared/schemas/one"
+      }
+    },
+    "push": {
+      "command": "prisma db push",
+      "options": {
+        "cwd": "libs/project-one/server/_shared/schemas/one"
+      }
+    },
+    "migrate": {
+      "command": "prisma migrate dev",
+      "options": {
+        "cwd": "libs/project-one/server/_shared/schemas/one"
+      }
+    },
+    "reset": {
+      "command": "prisma migrate reset",
+      "options": {
+        "cwd": "libs/project-one/server/_shared/schemas/one"
+      }
+    },
+    "studio": {
+      "command": "prisma studio",
+      "options": {
+        "cwd": "libs/project-one/server/_shared/schemas/one"
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../../../../../../../node_modules/@prisma/project-one/shared/one"
+  previewFeatures = ["postgresqlExtensions", "typedSql"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [vector]
+}
+
+model Tenant {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  email     String
+  users     User[]
+  roles     Role[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model User {
+  id        String    @id @default(cuid())
+  publicId  String    @unique
+  email     String
+  username  String
+  password  String
+  tenantId  String
+  tenant    Tenant    @relation(fields: [tenantId], references: [id])
+  roleId    String
+  role      Role      @relation(fields: [roleId], references: [id])
+  tests     Test[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Permission {
+  name      String             @unique
+  roles     PermissionToRole[]
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+}
+
+enum RoleType {
+  SuperAdmin
+  DefaultRole
+}
+
+model Role {
+  id          String             @id @default(cuid())
+  name        String
+  description String             @default("")
+  type        RoleType           @default(DefaultRole)
+  permissions PermissionToRole[]
+  users       User[]
+  tenantId    String
+  tenant      Tenant             @relation(fields: [tenantId], references: [id])
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  deletedAt   DateTime?
+}
+
+model PermissionToRole {
+  permissionName String
+  permission     Permission @relation(fields: [permissionName], references: [name])
+  roleId         String
+  role           Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([permissionName, roleId])
+}
+
+model Test {
+  id          String   @id @default(cuid())
+  name        String
+  description String   @default("")
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

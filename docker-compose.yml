@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  db:
+    image: ankane/pgvector
+    restart: always
+    environment:
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+    ports:
+      - '${DATABASE_PORT}:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '${CACHE_PORT}:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes:
+      - cache:/data
+  mail:
+    image: axllent/mailpit
+    restart: unless-stopped
+    environment:
+      - MP_DATA_FILE=/data/mailpit.db
+      - MP_UI_AUTH=${MAIL_USER}:${MAIL_PASSWORD}
+    ports:
+      - '${MAIL_PORT_1}:8025'
+      - '${MAIL_PORT_2}:1025'
+    volumes:
+      - mail:/data
+  minio:
+    image: docker.io/bitnami/minio:2024
+    restart: unless-stopped
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+      - MINIO_DEFAULT_BUCKETS=${MINIO_DEFAULT_BUCKETS}
+    ports:
+      - '${MINIO_PORT_1}:9000'
+      - '${MINIO_PORT_2}:9001'
+    volumes:
+      - minio:/bitnami/minio/data
+volumes:
+  db:
+    driver: local
+  cache:
+    driver: local
+  mail:
+    driver: local
+  minio:
+    driver: local

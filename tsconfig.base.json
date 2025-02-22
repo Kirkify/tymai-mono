@@ -1,0 +1,109 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mn/project-one/server/server-one/configs": [
+        "libs/project-one/server/server-one/configs/src/index.ts"
+      ],
+      "@mn/project-one/server/server-one/modules/auth": [
+        "libs/project-one/server/server-one/modules/auth/src/index.ts"
+      ],
+      "@mn/project-one/server/server-one/modules/root": [
+        "libs/project-one/server/server-one/modules/_root/src/index.ts"
+      ],
+      "@mn/project-one/server/server-one/modules/super-admin-test": [
+        "libs/project-one/server/server-one/modules/super-admin-test/src/index.ts"
+      ],
+      "@mn/project-one/server/server-two/configs": [
+        "libs/project-one/server/server-two/configs/src/index.ts"
+      ],
+      "@mn/project-one/server/server-two/modules/auth": [
+        "libs/project-one/server/server-two/modules/auth/src/index.ts"
+      ],
+      "@mn/project-one/server/server-two/modules/root": [
+        "libs/project-one/server/server-two/modules/_root/src/index.ts"
+      ],
+      "@mn/project-one/server/server-two/modules/test": [
+        "libs/project-one/server/server-two/modules/test/src/index.ts"
+      ],
+      "@mn/project-one/server/server-two/repos/test": [
+        "libs/project-one/server/server-two/repos/test/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/configs": [
+        "libs/project-one/server/_shared/configs/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/decorators": [
+        "libs/project-one/server/_shared/decorators/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/dtos": [
+        "libs/project-one/server/_shared/dtos/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/entities": [
+        "libs/project-one/server/_shared/entities/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/exceptions": [
+        "libs/project-one/server/_shared/exceptions/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/guards": [
+        "libs/project-one/server/_shared/guards/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/middlewares": [
+        "libs/project-one/server/_shared/middlewares/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/models": [
+        "libs/project-one/server/_shared/models/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/modules/admin": [
+        "libs/project-one/server/_shared/modules/admin/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/modules/auth": [
+        "libs/project-one/server/_shared/modules/auth/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/modules/email": [
+        "libs/project-one/server/_shared/modules/email/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/modules/embedding": [
+        "libs/project-one/server/_shared/modules/embedding/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/modules/queue": [
+        "libs/project-one/server/_shared/modules/queue/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/repos/admin": [
+        "libs/project-one/server/_shared/repos/admin/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/repos/one": [
+        "libs/project-one/server/_shared/repos/_one/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/repos/user": [
+        "libs/project-one/server/_shared/repos/user/src/index.ts"
+      ],
+      "@mn/project-one/server/shared/schemas/one": [
+        "libs/project-one/server/_shared/schemas/one/src/index.ts"
+      ],
+      "@mn/project-one/shared/routing/server-one": [
+        "libs/project-one/shared/routing/server-one/src/index.ts"
+      ],
+      "@mn/project-one/shared/routing/server-two": [
+        "libs/project-one/shared/routing/server-two/src/index.ts"
+      ],
+      "@mn/project-one/shared/routing/shared": [
+        "libs/project-one/shared/routing/_shared/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

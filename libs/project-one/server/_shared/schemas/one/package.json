@@ -1,0 +1,9 @@
+{
+  "name": "@mn/project-one/server/shared/schemas/one",
+  "version": "0.0.1",
+  "prisma": {
+    "seed": "nx run project-one-server-shared-schemas-one:db-seeder"
+  },
+  "dependencies": {},
+  "private": true
+}

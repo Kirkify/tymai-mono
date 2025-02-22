@@ -1,0 +1,27 @@
+{
+  "name": "project-one-server-shared-repos-one",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/project-one/server/_shared/repos/_one/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/project-one/server/_shared/repos/_one",
+        "tsConfig": "libs/project-one/server/_shared/repos/_one/tsconfig.lib.json",
+        "packageJson": "libs/project-one/server/_shared/repos/_one/package.json",
+        "main": "libs/project-one/server/_shared/repos/_one/src/index.ts",
+        "assets": ["libs/project-one/server/_shared/repos/_one/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/project-one/server/_shared/repos/_one/jest.config.ts"
+      }
+    }
+  }
+}

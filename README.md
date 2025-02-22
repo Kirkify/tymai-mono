@@ -1,118 +1,65 @@
-npx nx g @nx/nest:library --name=project-one-server-server-one-modules-super-admin-test --importPath="@mn/project-one/server/server-one/modules/super-admin-test" --directory="libs/project-one/server/server-one/modules/super-admin-test" --unitTestRunner=jest --linter=eslint --buildab
+# Project One Monorepo
 
-Create Angular Client Library
-npx nx g @nx/angular:lib --name=project-one-client-directives-shared --changeDetection=OnPush --style=scss  --flat=true --importPath="@mn/project-one/client/directives/shared" --directory="libs/project-one/client/directives/_shared" --buildable
+This repository is a monorepo containing multiple applications and their supporting libraries for the "project-one" project. It is designed to streamline development and code sharing across related applications.
 
-Create Nest Server Library
-npx nx g @nx/nest:library --name=project-one-server-configs --importPath="@mn/project-one/server/configs" --directory="libs/project-one/server/configs" --unitTestRunner=jest --linter=eslint --buildable
+## Introduction
 
-Create Shared API Client Library
-npx nx g @nx/js:lib --name=project-one-shared-api-client --directory=libs/project-one/shared/api-client --importPath=@mn/project-one/shared/api-client --bundler=tsc --linter=none --unitTestRunner=none
+The monorepo currently includes two server applications:
 
-Create Schema Library
-npx nx g @nx/js:lib --name=project-one-server-schema-one --directory=libs/project-one/server/schema-one --importPath=@mn/project-one/server/schema-one --bundler=none --linter=none --unitTestRunner=none  --minimal
+- **project-one-server-one**: This application hosts the AI pull request reviewer, a feature dedicated to automating pull request reviews. *(Note: This name will be updated to something more meaningful in the future.)*
+- **project-one-server-two**: Another server application within the "project-one" project.
 
-Remove a library
-npx nx g @nx/workspace:remove project-one-server-modules-auth --forceRemove
+The AI pull request reviewer is a core feature of "project-one-server-one", aimed at enhancing development efficiency by automating the review process for pull requests.
 
-# Mn
+---
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+## Repository Structure
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+The monorepo is organized into two main directories: `apps` for application source code and `libs` for libraries.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+- **`apps/`**: Contains the source code for the applications.
+  - `project-one-server-one/`: The server application that includes the AI pull request reviewer.
+  - `project-one-server-two/`: A separate server application within the "project-one" project.
 
-## Run tasks
+- **`libs/`**: Contains libraries used by the applications, structured under the `project-one/server/` namespace.
+  - `project-one/server/server-one/`: Libraries specific to "project-one-server-one". This is where most of the code for the AI pull request reviewer resides.
+  - `project-one/server/server-two/`: Libraries specific to "project-one-server-two". This is where code exclusive to "project-one-server-two" is housed.
+  - `project-one/server/_shared/`: Shared libraries used by both "project-one-server-one" and "project-one-server-two".
 
-To run the dev server for your app, use:
+---
 
-```sh
-npx nx serve project-one-client
-```
+## Applications
 
-To create a production bundle:
+### project-one-server-one
 
-```sh
-npx nx build project-one-client
-```
+This application includes the AI pull request reviewer, which automates the review process for pull requests. Its primary code, including logic specific to this feature, is located in `libs/project-one/server/server-one/`. This app will integrate with external services (e.g., a version control system) to fetch and analyze pull request data.
 
-To see all available targets to run for a project, run:
+### project-one-server-two
 
-```sh
-npx nx show project project-one-client
-```
+This is another server application within the "project-one" project. It shares common libraries with "project-one-server-one" from `libs/project-one/server/_shared/`, but has its own distinct functionality. Libraries exclusive to this application are located in `libs/project-one/server/server-two/`.
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+---
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Libraries
 
-## Add new projects
+The `libs` folder is organized to balance code reuse and separation of concerns:
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+- **`project-one/server/server-one/`**:
+  - Contains libraries exclusive to "project-one-server-one".
+  - Houses the majority of the AI pull request reviewer's code, such as review algorithms, integration logic, and utilities specific to this application.
 
-Use the plugin's generator to create new projects.
+- **`project-one/server/server-two/`**:
+  - Contains libraries exclusive to "project-one-server-two".
+  - Houses code specific to "project-one-server-two", such as unique features, utilities, or integrations not shared with other applications.
 
-To generate a new application, use:
+- **`project-one/server/_shared/`**:
+  - Contains libraries shared between "project-one-server-one" and "project-one-server-two".
+  - Includes common utilities, configurations, or modules that both applications rely on.
 
-```sh
-npx nx g @nx/angular:app demo
-```
+---
 
-To generate a new library, use:
+## AI Pull Request Reviewer
 
-```sh
-npx nx g @nx/angular:lib mylib
-```
+The AI pull request reviewer is a dedicated feature of "project-one-server-one". It is designed to automate the review process for pull requests, improving development workflows. Most of its implementation is located in `libs/project-one/server/server-one/`, with any reusable components or utilities shared with "project-one-server-two" placed in `libs/project-one/server/_shared/`.
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---

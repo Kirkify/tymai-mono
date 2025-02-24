@@ -8,6 +8,7 @@ import { ExpressAdapter } from '@bull-board/express';
 import { BasicAuthMiddleware } from '@mn/project-one/server/shared/middlewares';
 import { AuthModule } from '@mn/project-one/server/server-one/modules/auth';
 import { SuperAdminTestModule } from '@mn/project-one/server/server-one/modules/super-admin-test';
+import { ReviewModule } from '@mn/project-one/server/server-one/modules/review';
 
 @Module({
   imports: [
@@ -47,6 +48,7 @@ import { SuperAdminTestModule } from '@mn/project-one/server/server-one/modules/
 
     AuthModule,
     SuperAdminTestModule,
+    ReviewModule,
   ]
 })
 export class RootModule {}

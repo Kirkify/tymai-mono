@@ -9,4 +9,5 @@ export interface RoutingInterface {
 
   superAdmin: BaseRouteInterface;
   random: BaseRouteInterface;
+  review: BaseRouteInterface;
 }

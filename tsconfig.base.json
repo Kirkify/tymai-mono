@@ -22,11 +22,20 @@
       "@mn/project-one/server/server-one/modules/auth": [
         "libs/project-one/server/server-one/modules/auth/src/index.ts"
       ],
+      "@mn/project-one/server/server-one/modules/bit-bucket": [
+        "libs/project-one/server/server-one/modules/bit-bucket/src/index.ts"
+      ],
+      "@mn/project-one/server/server-one/modules/review": [
+        "libs/project-one/server/server-one/modules/review/src/index.ts"
+      ],
       "@mn/project-one/server/server-one/modules/root": [
         "libs/project-one/server/server-one/modules/_root/src/index.ts"
       ],
       "@mn/project-one/server/server-one/modules/super-admin-test": [
         "libs/project-one/server/server-one/modules/super-admin-test/src/index.ts"
+      ],
+      "@mn/project-one/server/server-one/repos/review": [
+        "libs/project-one/server/server-one/repos/review/src/index.ts"
       ],
       "@mn/project-one/server/server-two/configs": [
         "libs/project-one/server/server-two/configs/src/index.ts"

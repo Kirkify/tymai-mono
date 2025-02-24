@@ -11,4 +11,6 @@ export const Routing: RoutingInterface = {
   superAdmin: routeCreator('super-admin', () => Routing.globalPrefix.absolutePath()),
 
   random: routeCreator('random-test', () => Routing.globalPrefix.absolutePath()),
+
+  review: routeCreator('review', () => Routing.globalPrefix.absolutePath()),
 }
